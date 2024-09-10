@@ -1,0 +1,105 @@
+* Cognizant Interview Questions:
+
+1. Explain workflow of CI/CD for both infra and Application. https://chatgpt.com/share/8155ad9c-844d-4332-a228-6d6edcb68edd
+ans. 1. CI/CD Workflow for Infrastructure
+Tools Used: Terraform, Ansible, Azure DevOps, Jenkins, Git, etc.
+
+Step-by-Step Workflow:
+Version Control:
+
+Infrastructure as Code (IaC) scripts (like Terraform, Ansible playbooks) are stored in a version control system (e.g., Git).
+All changes to the infrastructure code (e.g., adding a new server, modifying network configuration) are committed to the repository.
+Trigger CI Pipeline:
+
+When a new change is pushed to the repository (e.g., a Git commit), it triggers the CI pipeline.
+The CI pipeline might include a linter to check the IaC scripts for syntax errors or best practices.
+Static Code Analysis:
+
+The IaC code undergoes static analysis to ensure it adheres to predefined coding standards and policies.
+Security scans and compliance checks are performed to detect vulnerabilities or policy violations.
+Plan Phase:
+
+The CI pipeline runs the "Terraform plan" or equivalent command to create an execution plan, which shows what changes will be made to the existing infrastructure.
+This plan is reviewed by the team to confirm that the changes are correct and expected.
+Testing:
+
+Execute infrastructure tests (using tools like Terratest, InSpec) to validate infrastructure behavior against predefined conditions.
+Unit tests are run to check individual components or resources.
+Approval:
+
+Manual or automatic approval is obtained based on the plan's output. This can involve peer reviews or change management approvals.
+Apply Phase:
+
+The CD pipeline automatically applies the changes to the target environment (development, staging, production) using commands like terraform apply.
+It ensures that the infrastructure is provisioned or updated as intended.
+Post-Deployment Validation:
+
+Run smoke tests and monitoring checks to validate the deployed infrastructure.
+Tools like Prometheus, Grafana, or Azure Monitor are used for monitoring and alerting.
+Deployment Complete:
+
+Once the infrastructure deployment is successful and validated, it is marked as completed in the pipeline.
+Notifications are sent to the relevant stakeholders via email, Slack, or other communication channels.
+2. CI/CD Workflow for Application
+Tools Used: Azure DevOps, Jenkins, GitHub Actions, Docker, Kubernetes, etc.
+
+Step-by-Step Workflow:
+Version Control:
+
+Application code is maintained in a version control system (e.g., Git).
+Developers push changes (commits) to the repository (feature branches, main branch).
+Trigger CI Pipeline:
+
+A push to the repository triggers the CI pipeline.
+The CI pipeline pulls the latest code and initiates the build process.
+Build:
+
+The application code is compiled or packaged (e.g., creating a JAR, WAR, or Docker image).
+Docker images are built if using containers, and stored in a container registry (e.g., Docker Hub, Azure Container Registry).
+Static Code Analysis:
+
+Run static code analysis tools (like SonarQube) to check code quality, security vulnerabilities, and compliance with coding standards.
+Automatically fail the build if the code does not meet the quality threshold.
+Automated Testing:
+
+Execute unit tests, integration tests, and functional tests to validate the code.
+Use testing frameworks (e.g., JUnit, Selenium) to ensure all tests pass.
+Package and Artifact Storage:
+
+Successful builds and tests result in packaging the application as an artifact (e.g., a Docker image, JAR, etc.).
+The artifacts are stored in an artifact repository (e.g., Nexus, Artifactory).
+Trigger CD Pipeline:
+
+The CD pipeline is triggered once the artifacts are ready.
+This can be automatic (based on a trigger) or manual, depending on the environment (staging or production).
+Deployment to Environment:
+
+Deploy the application to the target environment (development, staging, production).
+Use deployment tools like Kubernetes, Azure Web Apps, or AWS ECS.
+Rolling deployments, blue-green deployments, or canary releases can be used to reduce downtime and mitigate risk.
+Post-Deployment Testing:
+
+Conduct smoke tests, end-to-end tests, and performance tests to ensure the application is working correctly in the target environment.
+Automated health checks and monitoring tools verify the deployment status.
+Monitoring and Feedback:
+
+Continuous monitoring is set up to track the application's performance, availability, and errors using tools like Prometheus, Datadog, New Relic, etc.
+Alerts and notifications are configured to inform the DevOps or development team about any issues.
+Feedback Loop:
+
+Feedback from monitoring and automated tests is fed back to the development team for any required changes or improvements.
+The cycle repeats for continuous improvement and delivery.
+
+
+2. What is terraform taint?
+3. what is the difference in deployment and statefullset?
+4. what is locking in terraform?
+5. How do you manage sensitive Information in Terraform.
+6. What is Dynamic Block in Terraform?
+7. What are types of module in terraform.
+8. What is different between RUN and CMD in Docker File.
+9. What is Git branching strategy?
+10. Difference between git merge and rebase?
+11. What is git Stash?
+12. What are the different type of Loadbalancer in azure?
+13. What is application insight n azure cloud?
